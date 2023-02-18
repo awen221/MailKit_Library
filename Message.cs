@@ -22,32 +22,30 @@ namespace MailKit_Library
         }
 
         static public MimeMessage GetText(string senderName, string senderAddress, string subject,
-            string[] to, string[]? cc, string[]? bcc, string text)
+            string[] to, string[]? cc, string[]? bcc, string textbody)
         {
-            return Get(senderName, senderAddress, subject, to, cc, bcc, Body.GetText(text));
+            return Get(senderName, senderAddress, subject, to, cc, bcc, Body.GetText(textbody));
         }
         static public MimeMessage GetHtml(string senderName, string senderAddress, string subject,
-            string[] to, string[]? cc, string[]? bcc, string html)
+            string[] to, string[]? cc, string[]? bcc, string htmlbody)
         {
-            return Get(senderName, senderAddress, subject, to, cc, bcc, Body.GetHtml(html));
+            return Get(senderName, senderAddress, subject, to, cc, bcc, Body.GetHtml(htmlbody));
         }
 
         class Body
         {
-            static public MimeEntity GetText(string text)
+            static public MimeEntity GetText(string textbody)
             {
-
                 var builder = new BodyBuilder();
-                builder.TextBody = text;
+                builder.TextBody = textbody;
 
                 return builder.ToMessageBody();
             }
 
-            static public MimeEntity GetHtml(string text)
+            static public MimeEntity GetHtml(string htmlbody)
             {
-
                 var builder = new BodyBuilder();
-                builder.HtmlBody = text;
+                builder.HtmlBody = htmlbody;
 
                 return builder.ToMessageBody();
             }
